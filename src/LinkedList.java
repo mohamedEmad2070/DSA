@@ -10,6 +10,7 @@ public class LinkedList {
 
     boolean isEmpty() {
         return length == 0;
+        
     }
 
     void insertFirst(int element) {
