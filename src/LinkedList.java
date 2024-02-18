@@ -71,6 +71,70 @@ public class LinkedList {
         System.out.println();
     }
 
+    void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("LinkedList Is Empty");
+        } else if (length == 1) {
+            last = first = null;
+            length--;
+        } else {
+            first = first.next;
+            length--;
+        }
+    }
+
+    void removeLast() {
+        if (isEmpty()) {
+            System.out.println("LinkedList Is Empty");
+        } else if (length == 1) {
+            last = first = null;
+            length--;
+        } else {
+            Node curr = first.next;
+            Node prv = first;
+            while (curr != last) {
+                prv = curr;
+                curr = curr.next;
+            }
+            prv.next = null;
+            last = prv;
+            length--;
+        }
+
+    }
+
+    void removeElement(int element) {
+        if (isEmpty()) {
+            System.out.println("LinkedList Is Empty");
+            return;
+        } else if (first.data == element) {
+            first = first.next;
+            if (length == 0)
+                last = null;
+        } else {
+            Node curr, prev;
+            curr = first.next;
+            prev = first;
+            while (curr != null) {
+                if (curr.data == element) {
+                    break;
+                }
+                prev = curr;
+                curr = curr.next;
+            }
+            if (curr == null) {
+                System.out.println("Not Found!!");
+            } else {
+                prev.next = curr.next;
+                if (last == curr)
+                    last = prev;
+                length--;
+            }
+
+        }
+
+    }
+
 
 }
 
@@ -79,12 +143,12 @@ class Node {
     Node next;
 }
 
-class Main{
+class Main {
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.insertAtPos(0,10);
-        ll.insertAtPos(1,20);
-        ll.insertAtPos(2,30);
+        ll.insertAtPos(0, 10);
+        ll.insertAtPos(1, 20);
+        ll.insertAtPos(2, 30);
         ll.print();// 10 20 30
         ll.insertEnd(40);
         ll.insertEnd(50);
@@ -92,5 +156,11 @@ class Main{
         ll.insertFirst(9);
         ll.insertFirst(8);
         ll.print();//8 9 10 20 30 40 50
+        ll.removeFirst();
+        ll.print();//9 10 20 30 40 50
+        ll.removeLast();
+        ll.print();//9 10 20 30 40
+        ll.removeElement(10);
+        ll.print();//9 20 30 40
     }
 }
