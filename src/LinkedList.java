@@ -135,6 +135,35 @@ public class LinkedList {
 
     }
 
+    void reverse() {
+        Node prev, next, curr;
+        prev = null;
+        curr = first;
+        next = curr.next;
+        while (next != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            first = prev;
+        }
+    }
+
+    int search(int element) {
+        Node curr = first;
+        int pos = 0;
+        while (curr != null) {
+            if (curr.data == element) {
+                return pos;
+            }
+            curr = curr.next;
+            pos++;
+        }
+        return -999;
+
+
+    }
+
 
 }
 
@@ -142,6 +171,7 @@ class Node {
     int data;
     Node next;
 }
+
 
 class Main {
     public static void main(String[] args) {
@@ -162,5 +192,8 @@ class Main {
         ll.print();//9 10 20 30 40
         ll.removeElement(10);
         ll.print();//9 20 30 40
+        ll.reverse();
+        ll.print();//40 30 20 9
+        System.out.println(ll.search(20));//2
     }
 }
