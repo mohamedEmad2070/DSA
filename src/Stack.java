@@ -43,7 +43,7 @@ public class Stack {
         int val;
         if (isEmpty()) {
             System.out.println("Stack Is Empty");
-            return 0;
+            return -1;
         } else {
             val = item[top];
             return val;
