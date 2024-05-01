@@ -48,7 +48,7 @@ public class LinkedList {
         Node newNode = new Node();
         newNode.data = element;
         if (pos == 0) {
-            insertEnd(element);
+            insertFirst(element);
         } else if (pos == length) {
             insertEnd(element);
         } else {
